@@ -1,0 +1,71 @@
+
+		@font-face { font-family: '양진체'; src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff'); font-weight: normal; font-style: normal; }
+		.navCon{
+			display:flex;
+			position: fixed;
+
+			width:100%;
+			color:white;
+			/*box-shadow: 10px 10px 50px #c0c0c0;*/
+
+		}
+		.navBar{
+			background-color:#333333;
+			width:100%;
+			height:60px;
+			display: flex;
+			justify-content: center;
+			align-items:center;
+
+		}
+		body{
+			margin:0px;
+		}
+		#jointable{
+			position:relative;
+			left:50%;
+			transform:translateX(-50%);
+			width:80%;
+			max-width: 400px;
+
+		}
+		#jointable:link{
+			color:black;
+		}
+		#jointable > a:hover{
+			color:black;
+		}
+		a:visited{
+			color:black;
+		}
+		#joinstdno{
+			border-width: 0 0 2px 0;
+    		border-color: #ebebeb;
+			width:80%;
+			padding: 6px 7px 7px;
+			font-size: 16pt;
+			line-height: 1.5;
+			-webkit-font-smoothing: antialiased;
+			/*border:0;*/
+			caret-color:red;
+
+		   
+		}
+		input:focus{
+			outline:none;
+		}
+	
+		.joinInput{
+			font-size:16pt;
+			border-width: 0 0 2px 0;
+    		border-color: #ebebeb;
+			width:200px;
+			padding: 6px 7px 7px;
+			font-size: 16pt;
+			line-height: 1.5;
+			-webkit-font-smoothing: antialiased;
+			/*border:0;*/
+			caret-color:red;
+			
+		    text-rendering: auto;
+		}
