@@ -11,21 +11,24 @@
 		}
 		.navBar{
 			background-color:#333333;
+			border-radius:0 0px 20px 20px;
 			width:100%;
-			height:60px;
+			height:100px;
 			display: flex;
 			justify-content: center;
-			align-items:center;
-
+			
 		}
 		body{
 			margin:0px;
 		}
 		#jointable{
+			box-shadow: 20px 20px 60px;
+			border-radius: 10px;
+			background-color:#fefefe;
 			position:relative;
 			left:50%;
 			transform:translateX(-50%);
-			width:80%;
+			width:95%;
 			max-width: 400px;
 
 		}
