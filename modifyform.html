@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="modifyform.css">
+    <script src="modifyform.js"></script>
+
+</head>
+
+<body onload="init()">
+    <div id="container">
+
+        <form>
+            <p id="lable">학번</p>
+            <input type="text" name="studentId" class="inputField" readonly>
+
+            <p id="lable">이름</p>
+            <input type="text" name="studentName" class="inputField" id="nameField">
+
+            <p id="lable">기존 비밀번호</p>
+            <input type="text" name="studentPw" class="inputField" id="pwField">
+
+            <p id="pwCheckLable">기존에 사용중이던 비밀번호를 입력해주세요.</p>
+
+            <p id="lable">수정 비밀번호</p>
+            <input type="text" name="modifyPw" class="inputField" id="modifyPwField">
+
+            <p id="lable">학적상태</p>
+            <select name="studentStatus" class="selectField">
+                <option value="inSchool">재학</option>
+                <option value="rest">휴학</option>
+                <option value="graduation">졸업</option>
+            </select>
+
+            <input id="submitBtn" type="submit" value="수정하기">
+        </form>
+
+    </div>
+</body>
+
+</html>
