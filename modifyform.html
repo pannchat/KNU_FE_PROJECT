@@ -10,8 +10,27 @@
     <script src="modifyform.js"></script>
 
 </head>
-
+<style>
+        body,html{
+            /*background-color:#f2f2f2;*/
+            padding:0px;
+            margin:0px;
+        }
+        .flexBox{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        }
+                .inContain{
+            width:90%;
+            display: flex;
+        }
+</style>
 <body onload="init()">
+    <div class="flexBox">
+    <div class="inContain" style="flex-direction: row;width:95%;justify-content: space-between;align-items: center; font-weight: bold;
+        font-size:1.5em;"><img style="width:25px;" src="./arrow-left-solid.svg">일단 러프하게 <img style="width:25px"src="./menu.svg"></div>
+    </div>
     <div class="flexBox">
         <div id="container">
 

@@ -7,7 +7,7 @@ body{
     align-items: center;    /*세로 중앙 정렬*/
 }
 #container {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding-bottom: 15px;
     width: 90%;
     max-width:600px;
