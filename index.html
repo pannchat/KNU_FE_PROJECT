@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <style>
 h1 {text-align : center; margin-top : 80px; font-size:50px;}
 h2 {text-align : center;}
@@ -43,3 +44,90 @@ span {
 	</h3>
 </body>
 </html>
+=======
+<head>
+  <title>학점관리 사이트</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/4487a79980.js" crossorigin="anonymous"></script>
+      <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="./index.js"></script>
+</head>
+<body>
+
+	<style>
+
+	</style>
+	<div class="navCon">
+
+		<div class="navBar">
+			<div style="display:flex;flex:1 1;align-items:center;height:40px">
+				<span style="margin-left:10px;font-family:양진체;font-size:17pt;height:100%;line-height: 35px">로고자리</span>
+			</div>
+			<div style="display:flex;flex:0 1 50px;justify-content: center;">
+				<!-- <i class="fas fa-hamburger fa-1.5x"></i> -->
+                <i class="fas fa-bars fa-2x"></i>
+			</div>
+			
+		</div>
+
+	</div>
+	<div style="height:60px; width:100%"></div>
+
+<table id="jointable">
+
+        <!--회원가입 폼-->
+        <form action="" accept-charset="utf-8" name="joinfrom" method="post" onsubmit="return test()">
+            <tr>
+                <td><input type="text" id="joinstdno" name="stdno" placeholder="학번" /></td>
+                <td><input type='button' value='중복확인' onclick="openIdChk()"></td>
+            </tr>
+            <tr>
+                <td>Unchecked</td>
+            </tr>
+
+            <tr>
+                <td><input class="pw joinInput" id="joinpwd" type="password" name="pwd" placeholder="비밀번호" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input class="pw joinInput" id="checkjoinpwd" type="password" name="checkpwd" placeholder="비밀번호 확인" /></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
+                    <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input class="joinInput" type="text" id="joinname" name="name" placeholder="이름" /></td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td><input class="joinInput" type="text" id="joindept" name="dept" placeholder="학과" /></td>
+                <td><a href="URL" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;"><i class="fas fa-search"></i></a></td>
+            </tr>
+
+            <tr>
+                <td><select id="joinrole" name=role style="width: 100%">
+                        <option value="">role</option>
+                        <option value="student">학생</option>
+                        <option value="assistent">조교</option>
+                        <option value="professor">교수</option>
+                    </select></td>
+            </tr>
+
+            <tr>
+                <td><input type='submit' id="joinbtn" name="joinbtn" value='Sign Up'></td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>
+>>>>>>> a54f778c839c0d040b2381a00ba2ec6c8333f502
