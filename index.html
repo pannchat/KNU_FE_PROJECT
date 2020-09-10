@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<style>
+h1 {text-align : center; margin-top : 80px; font-size:50px;}
+h2 {text-align : center;}
+h3 {text-align : center;}
+h1 > a { color : skyblue; text-decoration:none}
+span > a {
+	text-decoration:none;
+	color:black;
+}
+span {
+	display : inline-block;
+	font-size:15px;
+	width :80px;
+	height : 20px;
+	border : 2px solid pink;
+	padding : 5px;
+
+
+}
+</style>
+<head>
+	<meta charset = "UTF-8">
+<title>나의학점관리</title>
+</head>
+<body>
+	<header>
+		<h1>
+		<a href="index.html">♣ 환영합니다 ♣</a>
+		</h1>
+		<h2>
+		<span><a href="major_list.html" target="left">전공영역</a></span>
+		<span><a href="liberal_list.html" target="left">교양영역</a></span>
+		</h2>
+	</header>
+	<br>
+	<h3>
+		<iframe srcdoc="<!DOCTYPE html><html><head></head><body>예제 목록이 표시되는 프레임입니다.</body></html>" name="left" width="300" height="800">
+		</iframe>
+		<iframe srcdoc="<html><head></head><body>예제 내용이 표시되는 프레임입니다.</body></html>" name="right" width="800" height="800">
+		</iframe>
+	</h3>
+</body>
+</html>
