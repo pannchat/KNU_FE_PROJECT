@@ -1,3 +1,4 @@
+{% load static %}
 {% load index %}
 
 <!DOCTYPE html>
@@ -41,11 +42,11 @@
 </style>
 <div class="flexBox">
 	<div class="inContain" style="flex-direction: row;width:95%;justify-content: space-between;align-items: center;	font-weight: bold;
-		font-size:1.5em;"><img style="width:25px;" src="./arrow-left-solid.svg">일단 러프하게 <img style="width:25px"src="./menu.svg"></div>
+		font-size:1.5em;"><img style="width:25px;" src="arrow-left-solid.svg">일단 러프하게 <img style="width:25px"src="{% static 'credit_manage/img/menu.svg"></div>
 </div>
 <div class="flexBox">
 	<div id ="myStatus">
-	<img id="runningIcon" src="./exercise.png">
+	<img id="runningIcon" src="{% static 'credit_manage/img/exercise.png' %}">
 
 	<div style="width:90%; height:7px; background-color:#ffbf00;"></div>
 	<div style="display:flex;width:90%;justify-content: space-between;color:#57595D"><p>1</p><p>2</p><p>3</p><p>4</p></div>
@@ -60,7 +61,7 @@
 <div class="flexBox">
 	<div style="display:flex;width:90%;margin-top:15px;">
 
-	<img style="width:50%; height: 120px;box-shadow: 0px 0px 15px #e3e3e3; "src="./graph.jpg">
+	<img style="width:50%; height: 120px;box-shadow: 0px 0px 15px #e3e3e3; "src="{% static 'credit_manage/img/graph.jpg' %}">
 		<div style="display:flex;flex-direction:column;align-items: center;justify-content:space-around;width:50%" >
 			<div class="inContain" id="myStatus" style="margin-top:0px;height:40px;">나의 학점현황&nbsp&nbsp&nbsp&nbsp></div>
 			<div class="inContain" id="myStatus" style="margin-top:0px;height:40px;">학부 교육과정 조회&nbsp&nbsp&nbsp&nbsp></div>
@@ -68,9 +69,9 @@
 	</div>
 	
 </div>
-<div class="calendar_text type1">
+<div class="flexBox" style="flex-direction:column">
 			<!--<a href="http://www.kangwon.ac.kr/DATA/download/www/2020_schedule_all.jpg" target="_blank" title="새창" class="btn download" style="float:right;">학사일정 전체보기</a>-->
-		<h4 class="h0">상세일정</h4>
+		<h4 style="margin-top:10px;margin-bottom: 0;">상세일정</h4>
 		<style>
 			table > td:nth-child(even){
 				background-color:gray;
@@ -83,9 +84,9 @@
 
 
 	{% for i in calArr %}
-	<div style="display:flex;width:90%;border-bottom:1px solid rgb(72, 62, 62)">
-			<div style="width:100%">{{i.0}}</div>
-			<div style="width:100%">{{i.1}}</div>
+	<div style="display:flex;width:90%;border-bottom:1px solid #888888">
+			<div style="width:100%; "><p style="vertical-align: middle;">{{i.0}}</p></div>
+			<div style="width:100%; "><p style="vertical-align: middle;">{{i.1}}</p></div>
 
 	</div>
 
