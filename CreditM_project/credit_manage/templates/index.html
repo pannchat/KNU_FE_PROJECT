@@ -1,24 +1,14 @@
+{% extends 'base.html'%}
 {% load static %}
 {% load index %}
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>main</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-</head>
-<body>
+    <title>main</title>
+{% block contents %}
+
 <style>
-		body,html{
-			/*background-color:#f2f2f2;*/
-			padding:0px;
-			margin:0px;
-		}
-		.flexBox{
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		}
+
 		#myStatus{
 			margin-top:50px;
 			border-radius: 3px;
@@ -31,19 +21,12 @@
 			flex-direction: column;
 			align-items: center;
 		}
-		.inContain{
-			width:90%;
-			display: flex;
-		}
 		#runningIcon{
 			width:5em;
 			margin-top:10px;
 		}
 </style>
-<div class="flexBox">
-	<div class="inContain" style="flex-direction: row;width:95%;justify-content: space-between;align-items: center;	font-weight: bold;
-		font-size:1.5em;"><img style="width:25px;" src="arrow-left-solid.svg">일단 러프하게 <img style="width:25px"src="{% static 'credit_manage/img/menu.svg"></div>
-</div>
+
 <div class="flexBox">
 	<div id ="myStatus">
 	<img id="runningIcon" src="{% static 'credit_manage/img/exercise.png' %}">
@@ -97,3 +80,4 @@
 </div>
 </body>
 </html>
+{% endblock %}

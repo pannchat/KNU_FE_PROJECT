@@ -34,3 +34,11 @@ def index(request):
 
     # print(matching)
     return render(request, 'index.html',{'calArr':calArr})
+def myaccount(request):
+    return render(request, 'modifyform.html')
+    
+def mycredit(request):
+    return render(request, 'mycredit.html')
+
+def login(request):
+    return render(request, 'login.html')
