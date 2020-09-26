@@ -36,9 +36,12 @@ def index(request):
     return render(request, 'index.html',{'calArr':calArr})
 def myaccount(request):
     return render(request, 'modifyform.html')
-    
+
 def mycredit(request):
     return render(request, 'mycredit.html')
 
 def login(request):
     return render(request, 'login.html')
+
+def intro(request):
+    return render(request, 'intro.html')

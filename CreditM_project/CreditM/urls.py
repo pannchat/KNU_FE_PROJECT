@@ -19,8 +19,9 @@ import credit_manage.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', credit_manage.views.index, name='index'),
+    path('index', credit_manage.views.index, name='index'),
     path('myaccount', credit_manage.views.myaccount, name='myaccount'),
     path('mycredit', credit_manage.views.mycredit, name='mycredit'),
     path('login', credit_manage.views.login, name='login'),
+    path('', credit_manage.views.intro, name='intro'),
 ]
