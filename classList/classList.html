@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="classList.css">
+    <script type="text/javascript" src="classList.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <form name="filterForm" action="">
+            <div id="filterNav">
+                <select class="selectBox" name="Grade">
+                    <option value="전체">학년</option>
+                    <script>
+                        gradeAdd();
+                    </script>
+
+                </select>
+
+                <select class="selectBox" name="College">
+                    <option value="전체">단과</option>
+                    <script>
+                        collegeAdd();
+                    </script>
+                </select>
+
+                <select class="selectBox" name="Dept">
+                    <option value="전체">학과</option>
+                    <script>
+                        deptAdd();
+                    </script>
+                </select>
+
+                <select class="selectBox" name="Field">
+                    <option value="전체">영역</option>
+                    <script>
+                        fieldAdd();
+                    </script>
+                </select>
+
+                <select class="selectBox" name="Credit">
+                    <option value="전체">학점</option>
+                    <script>
+                        creditAdd();
+                    </script>
+                </select>
+
+                <input id="searchBtn" type="button" value="검색" onclick="startSearch()">
+            </div>
+        </form>
+
+        <div id="content">
+            <script>
+                //classList();
+            </script>
+        </div>
+    </div>
+
+</body></html>

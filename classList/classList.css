@@ -1,0 +1,49 @@
+    #container {
+        border: 1px solid black;
+    }
+
+    #filterNav {
+        text-align: center;
+    }
+
+    #content {
+        margin-top: 10px;
+        height: 400px;
+        overflow: scroll;
+    }
+
+    .selectBox {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 5px;
+        text-align-last: center;
+        width: 60px;
+        border: none;
+        font-family: 'Do Hyeon', sans-serif;
+    }
+
+    #searchBtn {
+        font-family: 'Do Hyeon', sans-serif;
+        background-color: #f2f2f2;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    #content::-webkit-scrollbar {
+        display: none;
+    }
+
+    #classinfo {
+        border-bottom: 1px solid #959595;
+        padding: 5px;
+        width: 100%;
+    }
+
+    .classInfoDesign {
+        border-bottom: 1px solid #959595;
+        padding: 5px;
+        width: 100%;
+    }
