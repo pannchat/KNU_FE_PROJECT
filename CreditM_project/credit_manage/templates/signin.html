@@ -30,13 +30,17 @@
                     <option value="4">4학년</option>
                     <option value="5">5학년</option>
                 </select>
-
-                <p id="lable">기존 비밀번호</p>
+                <p id="lable">학과</p>
+                <div style="display:flex">
+                    <input type="text" name="studentName" class="inputField" id="nameField">
+                    <img style="width:32px;"src="{% static 'credit_manage/img/search.png' %}">
+                </div>
+                <p id="lable">비밀번호</p>
                 <input type="text" name="studentPw" class="inputField" id="pwField">
 
                 <p id="pwCheckLable">기존에 사용중이던 비밀번호를 입력해주세요.</p>
 
-                <p id="lable">수정 비밀번호</p>
+                <p id="lable">비밀번호 확인</p>
                 <input type="text" name="modifyPw" class="inputField" id="modifyPwField">
 
                 <p id="lable">학적상태</p>
