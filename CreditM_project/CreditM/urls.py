@@ -24,4 +24,5 @@ urlpatterns = [
     path('mycredit', credit_manage.views.mycredit, name='mycredit'),
     path('login', credit_manage.views.login, name='login'),
     path('', credit_manage.views.intro, name='intro'),
+    path('signin', credit_manage.views.signin, name='signin'),
 ]
