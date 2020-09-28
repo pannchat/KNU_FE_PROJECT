@@ -45,3 +45,6 @@ def login(request):
 
 def intro(request):
     return render(request, 'intro.html')
+
+def signin(request):
+    return render(request, 'signin.html')
