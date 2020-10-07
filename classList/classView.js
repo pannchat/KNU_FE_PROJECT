@@ -9,7 +9,6 @@ var fieldArr = ["기초교양", "균형교양", "특화교양", "대학별교양
 var creditArr = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5];
 
 
-
 //(목록 불러와서)선택 박스에 추가
 function semesterAdd() {
     for (i = 0; i < semesterArr.length; i++) {
@@ -70,6 +69,7 @@ function startSearch() {
     ajaxTest(userGrade, userCollege, userDept, userField, userCreadit, userSemester, userMajor);
 }
 
+
 //수업 출력
 function ajaxTest(grade, college, dept, field, credit ,semester, major) 
 {
@@ -102,20 +102,12 @@ function ajaxTest(grade, college, dept, field, credit ,semester, major)
             for(i=0; i<20; i++)
             {   
                 var item = document.createElement("div");
-                var takeBtn = document.createElement("button");
                 
                 item.setAttribute("id", "classinfo" + i);           //id는 각자 상이하게 (0~n)
                 item.setAttribute("class", "classInfoDesign");      //div의 css부분
-                
-                takeBtn.setAttribute("type","button");
-                takeBtn.setAttribute("id","takeBtn"+i);
-                takeBtn.textContent = "담기";
-                //takeBtn.setAttribute("onclick","")
-                
                 item.innerHTML = information;
                 
                 parent.append(item);
-                item.append(takeBtn);
             }
         }
         
