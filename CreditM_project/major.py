@@ -15,31 +15,31 @@ test = soup('div',{'class':'organization department'})
 test=test[1].find_all('li',{'class','depth1'}) # 대학 division의 li를 모두 추출
 # 단과대학 정보 추출
 n=0
-jsondict = {'college':[{"name":"","link":"","dept":[{"name":"","link":"","major":[{"name":"","link":""}]}]}]}
-{
-        "college": [
-            {"name":"IT대학",
-            "link":"it.kangwon.ac.kr",
-            "dept":[] 
-            {
-                "name":"Computer",
-                "link":"cs.kangwon.ac.kr",
-                "major":[{"name":"CS", "link":"kangwon.ac.kr"},{"name":"CE", 
-                "link":"kangwon.ac.kr"}]
-            },
-            {
-                "name":"전기전자",
-                "link":"el.kangwon.ac.kr",
-                "major":[{"name":"전기전자","link":"el.kangwon.ac.kr"}]
-            }
+# jsondict = {'college':[{"name":"","link":"","dept":[{"name":"","link":"","major":[{"name":"","link":""}]}]}]}
+# {
+#         "college": [
+#             {"name":"IT대학",
+#             "link":"it.kangwon.ac.kr",
+#             "dept":[] 
+#             {
+#                 "name":"Computer",
+#                 "link":"cs.kangwon.ac.kr",
+#                 "major":[{"name":"CS", "link":"kangwon.ac.kr"},{"name":"CE", 
+#                 "link":"kangwon.ac.kr"}]
+#             },
+#             {
+#                 "name":"전기전자",
+#                 "link":"el.kangwon.ac.kr",
+#                 "major":[{"name":"전기전자","link":"el.kangwon.ac.kr"}]
+#             }
 
-            }}
-        ]
-}
+#             }}
+#         ]
+# }
 for n in range(14):
     college = test[n].find('div',{'class':'title'})
     print(college.find('a').get_text(), college.find('a').attrs['href'])
-    jsondict['college']
+
     ###########
 
     major = test[n].find('ul',{'class':'depth2_list'})

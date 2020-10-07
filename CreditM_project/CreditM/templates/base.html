@@ -1,57 +1,93 @@
 {% load static %}
 <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link rel="stylesheet" href="{% static 'base/base.css' %}">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'base/base.css' %}" />
 </head>
 
-
-
 <div class="flexBox">
-    <div class="inContain" style="flex-direction: row;width:95%;justify-content: space-between;align-items: center;	font-weight: bold;
-        font-size:1.5em;"><img onclick="goBack()" style="cursor:pointer;width:35px;margin-left:-5px;margin-right: 5px;" src="{% static 'credit_manage/img/backBtn.png' %}">{% block title %}일단 러프하게{% endblock %} <img id="menuBtn" src="{% static 'credit_manage/img/menuBtn.png' %}"></div>
+    <div
+        class="inContain"
+        style="
+            flex-direction: row;
+            width: 95%;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5em;
+        "
+    >
+        <img
+            onclick="goBack()"
+            style="
+                cursor: pointer;
+                width: 35px;
+                margin-left: -5px;
+                margin-right: 5px;
+            "
+            src="{% static 'credit_manage/img/backBtn.png' %}"
+        />{% block title %}일단 러프하게{% endblock %}
+        <img id="menuBtn" src="{% static 'credit_manage/img/menuBtn.png' %}" />
+    </div>
 </div>
 <div class="menuWrap">
     <nav id="menu">
         <ul class="menuList">
             <li class="listStyle"><a href="{% url 'index' %}">home</a></li>
 
-            <li class="listStyle"><a href="{% url 'myaccount' %}">마이페이지</a></li>
+            <li class="listStyle">
+                <a href="{% url 'myaccount' %}">마이페이지</a>
+            </li>
             <li class="listStyle"><a href="{% url 'login'%}">login</a></li>
+            <li class="listStyle">
+                <a href="{% url 'mycredit'%}">mycredit</a>
+            </li>
         </ul>
     </nav>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function(){
-        document.querySelector('#menuBtn').addEventListener("click",function(e){
-            if ( document.querySelector('.menuWrap').classList.contains('on') ){
-        //메뉴닫힘
-                document.querySelector('.menuWrap').classList.remove('on');
-                document.getElementById('menuBtn').src="{% static 'credit_manage/img/menuBtn.png' %}";
-                document.querySelector('#menuBtn').classList.remove('btnRotate');
-                document.querySelector('#dimmed').remove();
-            } else {
-        //메뉴펼처짐
-                document.querySelector('.menuWrap').classList.add('on');
-                document.getElementById('menuBtn').src="{% static 'credit_manage/img/cross.png' %}";
-                document.querySelector('#menuBtn').classList.add('btnRotate');
-                let div = document.createElement('div');
-                div.id = 'dimmed';
-                document.body.append(div);
+    document.addEventListener('DOMContentLoaded', function () {
+        document
+            .querySelector('#menuBtn')
+            .addEventListener('click', function (e) {
+                if (
+                    document.querySelector('.menuWrap').classList.contains('on')
+                ) {
+                    //메뉴닫힘
+                    document.querySelector('.menuWrap').classList.remove('on');
+                    document.getElementById('menuBtn').src =
+                        "{% static 'credit_manage/img/menuBtn.png' %}";
+                    document
+                        .querySelector('#menuBtn')
+                        .classList.remove('btnRotate');
+                    document.querySelector('#dimmed').remove();
+                } else {
+                    //메뉴펼처짐
+                    document.querySelector('.menuWrap').classList.add('on');
+                    document.getElementById('menuBtn').src =
+                        "{% static 'credit_manage/img/cross.png' %}";
+                    document
+                        .querySelector('#menuBtn')
+                        .classList.add('btnRotate');
+                    let div = document.createElement('div');
+                    div.id = 'dimmed';
+                    document.body.append(div);
 
-                //페이지 스크롤 락  모바일 이벤트 차단
-                document.querySelector('#dimmed').addEventListener('scroll touchmove touchend mousewheel', function(e){
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                });     
-            }
-        });
-        
+                    //페이지 스크롤 락  모바일 이벤트 차단
+                    document
+                        .querySelector('#dimmed')
+                        .addEventListener(
+                            'scroll touchmove touchend mousewheel',
+                            function (e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                return false;
+                            },
+                        );
+                }
+            });
     });
-    function goBack(){
+    function goBack() {
         window.history.back();
     }
 </script>
-{% block contents %}
-{% endblock %}
+{% block contents %} {% endblock %}

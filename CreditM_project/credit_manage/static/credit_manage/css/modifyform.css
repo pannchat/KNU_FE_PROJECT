@@ -1,17 +1,16 @@
-body{
-    margin:0px; /* body 는 기본적으로 margin 이 적용되어있어서 0으로 초기화 해줫습니다 */
+body {
+    margin: 0px; /* body 는 기본적으로 margin 이 적용되어있어서 0으로 초기화 해줫습니다 */
 }
-.flexBox{
-    display:flex; /*flex컨테이너 사용*/
+.flexBox {
+    display: flex; /*flex컨테이너 사용*/
     justify-content: center; /*가로 중앙 정렬*/
-    align-items: center;    /*세로 중앙 정렬*/
+    align-items: center; /*세로 중앙 정렬*/
 }
 #container {
     /*border: 1px solid black;*/
     padding-bottom: 15px;
     width: 90%;
-    max-width:600px;
-    
+    max-width: 600px;
 }
 
 #lable,
