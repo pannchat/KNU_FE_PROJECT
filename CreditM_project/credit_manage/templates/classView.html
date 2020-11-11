@@ -1,0 +1,122 @@
+{% extends 'base.html'%} {% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  {% block contents %}
+  <head>
+    <title>{% block title %}수업 장바구니{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'credit_manage/css/classList.css' %}"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'credit_manage/js/classView.js' %}"
+    ></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <form name="filterForm" action="">
+        <div id="filterNav">
+          <select class="selectBox" name="Grade">
+            <option value="전체">학년</option>
+            <script>
+              gradeAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="Semester">
+            <option value="전체">학기</option>
+            <script>
+              semesterAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="College">
+            <option value="전체">단과</option>
+            <script>
+              collegeAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="Major">
+            <option value="전체">학부</option>
+            <script>
+              majorAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="Dept">
+            <option value="전체">학과</option>
+            <script>
+              deptAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="Field">
+            <option value="전체">영역</option>
+            <script>
+              fieldAdd();
+            </script>
+          </select>
+
+          <select class="selectBox" name="Credit">
+            <option value="전체">학점</option>
+            <script>
+              creditAdd();
+            </script>
+          </select>
+
+          <input
+            id="searchBtn"
+            type="button"
+            value="조회"
+            onclick="startSearch()"
+          />
+        </div>
+      </form>
+
+        <div id="content"  >
+          <div style="display: flex;padding:10px;">
+          <div style="display: flex; justify-content: center">
+            <div style="width:300px;flex:1 1 300px; display: flex; flex-flow: column">
+              <span><b>묵언수행(인문사회)</b></span>
+              <span>주다사</span>
+              <span>월A6,목A6(60주년 기념관314)</span>
+              <span>1학년 기초교양 3학점 1100004-1</span>
+            </div>
+          </div>
+          <div style="display:flex;flex:0 0;width:40px;height:70px;align-items:center;justify-content: center;"><div style="padding:5px;background-color:#ccc;border-radius: 4px;"><img style="width:34px;"src="{% static 'credit_manage/img/down.png' %}"></div></div>
+        </div>
+        <div style="display: flex;padding:10px;">
+          <div style="display: flex; justify-content: center">
+            <div style="width:300px;flex:1 1 300px; display: flex; flex-flow: column">
+              <span><b>KPOP의 역사와 이해(인문사회)</b></span>
+              <span>사나</span>
+              <span>월A6,목A6(60주년 기념관314)</span>
+              <span>1학년 기초교양 3학점 1100004-1</span>
+            </div>
+          </div>
+          <div style="display:flex;flex:0 0;width:40px;height:70px;align-items:center;justify-content: center;"><div style="padding:5px;background-color:#ccc;border-radius: 4px;"><img style="width:34px;"src="{% static 'credit_manage/img/down.png' %}"></div></div>
+        </div>
+        </div>
+        
+      
+        <script></script>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
+{% endblock %}

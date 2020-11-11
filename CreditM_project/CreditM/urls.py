@@ -25,4 +25,7 @@ urlpatterns = [
     path('login', credit_manage.views.login, name='login'),
     path('', credit_manage.views.intro, name='intro'),
     path('signin', credit_manage.views.signin, name='signin'),
+    path('classList', credit_manage.views.classList, name='classList'),
+    path('classView', credit_manage.views.classView, name='classView')
+
 ]

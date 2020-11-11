@@ -8,7 +8,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     
         <link rel="stylesheet" type="text/css" href="{% static 'credit_manage/css/modifyform.css'%}">
-        <script src="{% static 'credit_manage/js/modifyform.js'%}"></script>
+        <script src="{% static 'credit_manage/js/signIn.js'%}"></script>
     </head>
     
 
@@ -17,13 +17,13 @@
 
             <form>
                 <p id="lable">학번</p>
-                <input type="text" name="studentId" class="inputField" readonly>
+                <input type="text" id="studentId" name="studentId" class="inputField" >
 
                 <p id="lable">이름</p>
-                <input type="text" name="studentName" class="inputField" id="nameField">
+                <input type="text" name="studentName" class="inputField" id="studentName">
 
                 <p id="lable">학년</p>
-                <select name="studentGrade" class="selectField">
+                <select id="studentGrade" name="studentGrade" class="selectField">
                     <option value="1">1학년</option>
                     <option value="2">2학년</option>
                     <option value="3">3학년</option>
@@ -32,11 +32,11 @@
                 </select>
                 <p id="lable">학과</p>
                 <div style="display:flex">
-                    <input type="text" name="studentName" class="inputField" id="nameField">
+                    <input type="text" name="studentName" id="major" class="inputField" id="nameField">
                     <img id="modalOpen" style="width:32px;"src="{% static 'credit_manage/img/search.png' %}">
                 </div>
                 <p id="lable">비밀번호</p>
-                <input type="text" name="studentPw" class="inputField" id="pwField">
+                <input type="text" name="studentPw" class="inputField" id="studentPw">
 
                 <p id="pwCheckLable">기존에 사용중이던 비밀번호를 입력해주세요.</p>
 
@@ -94,39 +94,64 @@
     </div>
     <!-- <button id="ajaxBtn" type="button" >test</button> -->
 <script>
-	(function(){
-	var req;
-	document.getElementById("submitBtn").addEventListener("click", makeRequest);
+    document.addEventListener('DOMContentLoaded', 
+        () => {
+            var req;
+	        document.getElementById("submitBtn").addEventListener("click", makeRequest);
+        }
+    );
+
 
 	function makeRequest(){
+        let studentId = document.getElementById('studentId').value;
+        let name = document.getElementById('studentName').value;
+        let uniYear = document.getElementById('studentGrade').value;
+        let major = document.getElementById('major').value;
+        let studentPw = document.getElementById('studentPw').value;
+        alert(studentPw);
+        if (studentId.length !== 9){
+            alert("학번이 올바르지 않습니다");
+            return 0;
+        }
+        if (name === '박지원병신'){
+            alert("장난하지마라");
+            return 0;
+        } 
+
+        
 		req = new XMLHttpRequest();
 		if(!req) {
-		alert('XMLHTTP 인스턴스를 만들 수가 없습니다.');
-		return false;
+		    alert('XMLHTTP 인스턴스를 만들 수가 없습니다.');
+		    return false;
 		}
 		req.onreadystatechange = alertContents;
-		req.open("GET", "http://54.180.157.139:8080/api/accounts", true);
+		req.open("POST", "http://54.180.157.139:8080/api/accounts", true);
 		req.setRequestHeader('Content-Type', 'application/Json');
-		req.send();
+        const data = { "studentId": studentId, "password": studentPw, "name": name, "uniYear": uniYear, semester: "FALL", "major": "컴퓨터과학"}
+        req.send(JSON.stringify(data));
+// 
 	}
 
 	function alertContents(){
 		try{
 			if( req.readyState === XMLHttpRequest.DONE){
-				alert(req.status);
-				if(req.status === 200){
+				if(req.status === 201){
 					reqs = req.responseText;
-					alert(reqs);
-					var res = JSON.parse(reqs);
-					alert(res.id);
+                    alert("회원가입이 완료되었습니다.");
+                    location.href="{% url 'login'%}";
+
 				}else{
-					alert("error");
+                    reqs = req.responseText
+                    var jsonReqs = JSON.parse(reqs);
+					alert(jsonReqs['error']);
+                    // alert("error");
+                    
 				}
 			}
 		}catch(e){
 			alert("Caught Exception: "+ e.description);
 		}
-	}})();
+	};
 
 
 </script>

@@ -14,7 +14,7 @@
 <body>
 	<style>
 
-		.loginBtn{
+		#loginBtn{
 		border:0px;
 		background-color:#ffbf00;
 		border-radius:2px;
@@ -59,15 +59,60 @@
 		<p>Log In</p>
 	</div>
 <div class="flexBox" style="flex-direction: column;">
-	<input class="joinInput"type="text" placeholder="Student ID" />
-	<input class="joinInput"type="password" placeholder="Password" />
+	<input class="joinInput"type="text" placeholder="Student ID" id="studentId" />
+	<input class="joinInput"type="password" placeholder="Password" id="studentPw" />
 	<div style="width:90%;text-align: right">forgot account?</div>
 </div>
 
 <div class="flexBox" style="margin-top:15vh;">
-	<div class="loginBtn">
+	<div id="loginBtn">
 		Login
 	</div>
 </body>
+<script>
+	document.addEventListener('DOMContentLoaded',
+		() =>{
+			var req;
+			document.getElementById('loginBtn').addEventListener("click",makeRequest);
+		}
+	);
+	function makeRequest(){
+			req = new XMLHttpRequest();
+				if(!req) {
+					alert('XMLHTTP 인스턴스를 만들 수가 없습니다.');
+					return false;
+				}
+				
+				let studentId = document.getElementById("studentId").value;
+				let studentPw = document.getElementById("studentPw").value;
+				req.onreadystatechange = alertContents;
+				req.open("POST", "http://54.180.157.139:8080/api/session", true);
+				req.setRequestHeader('Content-Type', 'application/Json');
+				const data = { "studentId": studentId, "password": studentPw };
+				req.send(JSON.stringify(data));
+	}
+	function alertContents(){
+		try{
+			if( req.readyState === XMLHttpRequest.DONE){
+				if(req.status === 201){
+					reqs = req.responseText;
+					var jsonReqs = JSON.parse(reqs);
+					alert("로그인 성공");
+					alert(jsonReqs['token']);
+                    location.href="{% url 'login'%}";
+
+				}else{
+                    reqs = req.responseText;
+					var jsonReqs = JSON.parse(reqs);
+					alert(jsonReqs['error']);
+                    // alert("error");
+                    
+				}
+			}
+		}catch(e){
+			alert("Caught Exception: "+ e.description);
+		}
+	}
+</script>
 </html>
 {% endblock %}

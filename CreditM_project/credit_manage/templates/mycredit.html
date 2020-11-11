@@ -1,95 +1,346 @@
-{% extends 'base.html'%}
-{%load static%}
+{% extends 'base.html'%} {%load static%}
 
 <!DOCTYPE html>
 <html>
   {% block contents %}
   <head>
-      <title>{% block title %}회원 가입{% endblock %}</title>
-  <style>
-    .flexBox{
-      display:flex; /*flex컨테이너 사용*/
-      justify-content: center; /*가로 중앙 정렬*/
-      align-items: center;    /*세로 중앙 정렬*/
-    }
-    #container {
+    <title>{% block title %}이수 학점 관리{% endblock %}</title>
+
+    <style>
+      .flexBox {
+        display: flex; /*flex컨테이너 사용*/
+        justify-content: center; /*가로 중앙 정렬*/
+        align-items: center; /*세로 중앙 정렬*/
+      }
+      #container {
         /*border: 1px solid black;*/
         padding-bottom: 15px;
         width: 90%;
-        max-width:600px;
-        
-    }
-    .graph {
+        max-width: 600px;
+      }
+      .graph {
         position: relative;
         width: 100%;
-        border: 1px solid #B1D632;
+        border: 1px solid #f9cc51;
         padding: 2px;
-	    	font-size:11px;
-		    font-family:tahoma;
-		    margin-bottom:3px;
-    }
-    .graph .bar {
+        font-size: 11px;
+        font-family: tahoma;
+        margin-bottom: 3px;
+      }
+      .graph .bar {
         display: block;
         position: relative;
-        background: #B1D632;
+        background: #f9cc51;
         text-align: center;
         color: #333;
         height: 2em;
         line-height: 2em;
+      }
+      table {
+        width: 100%;
+      }
+      .switch {
+        position: relative;
+        /* right: 10px; */
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+      .switch input {
+        opacity: 0;
+        widows: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        transition: 0.4s;
+      }
+      .slider:before {
+        position: absolute;
+        content: '';
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: #f9cc51;
+        transition: 0.4s;
+      }
+      input:checked + .slider {
+        background-color: #7cb5ec;
+      }
+      input:checked + .slider::before {
+        background-color: white;
+      }
+      input:focus + .slider {
+        /* box-shadow: 0 0 1px #2196f3; */
+      }
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      .slider.round {
+        border-radius: 34px;
+      }
+      .slider.round::before {
+        border-radius: 50%;
+      }
+      #myCredit {
+        opacity: 1;
+        transition: 0.4s;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      #curriculum{
+        display: none;
+        
+      }
+      #curriculum table {
+  
+      }
+      #curriculum th {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flexBox">
+      <div
+        style="
+          background-color: #f9cc51;
+          border-radius: 4px;
+          width: 90%;
+          height: 100px;
+          margin-top: 3rem;
+          color: white;
+          padding: 10px;
+          box-sizing: border-box;
+          display: flex;
+        "
+        id="pannel"
+      >
+        <div style="width: 100%">
+          <h2 id="pannelTitle" style="margin: 0">나의 학점</h2>
+          총 취득 학점 : 120/130
+        </div>
+        <div style="width: 70px">
+          <label class="switch">
+            <input id="CheckToggle" type="checkbox" onchange="Toggle()" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flexBox" style="flex-direction: column">
+      <div id="container">
+        <div id="myCredit">
+          <h3>전공영역</h3>
+          <ul>
+            <li>
+              <h4>전공필수 10/12</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 83%">83%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>전공선택 23/30</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 76%">76%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>심화전공 27/27</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>전공합계 60/69</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 86%">86%</strong>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <h3>교양영역</h3>
+          <ul>
+            <li>
+              <h4>기초교양 7/7</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>균형교양 12/12</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>특화교양 1/1</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>대학별교양 9/9</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+            <li>
+              <h4>교양합계 29/29</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 100%">100%</strong>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <h3>그 외</h3>
+          <ul>
+            <li>
+              <h4>자유선택 25/32</h4>
+              <div class="graph">
+                <strong class="bar" style="width: 76%">76%</strong>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <h3>전체학점</h3>
+          <div class="graph">
+            <strong class="bar" style="width: 97%">97%</strong>
+          </div>
+          <table>
+            <tr>
+              <th>합계 125/130</th>
+              <th>총신청학점 125</th>
+              <th>총취득학점 124.5</th>
+              <th>총평점점계 426.5</th>
+              <th>총평점평균 3.44</th>
+            </tr>
+          </table>
+        </div>
+        <div id="curriculum">
+          <style>
+
+            header {
+              color: skyblue;
+            }
+
+            td {
+              text-align: center;
+              font-weight: normal;
+            }
+            .boldFont{
+              color:#7cb5ec;
+            }
+          </style>
+
+          <header><h1>2020년도 교육과정</header>
+          <h2>영역별 이수 학점
+          <table>
+            <tr>
+              <th rowspan="2" colspan="3"><h3>전공명</th>
+              <th colspan="3">컴퓨터공학과</th>
+              <tr>
+                <th>복수전공</th>
+                <th>단일부전공</th>
+                <th>기본전공</th>
+              </tr>
+            </tr>
+        
+            <tr>
+              <th rowspan="5">교양영역</th>
+              <th colspan="2">기초</th>
+              <td colspan="3">10</td>
+              <tr>
+                <th colspan="2">균형</th>
+                <td colspan="3">12</td>
+              </tr>
+              <tr>
+                <th colspan="2">특화</th>
+                <td colspan="3">1</td>
+              </tr>
+              <tr>
+                <th colspan="2">대학별</th>
+                <td colspan="3">18</td>
+              </tr>
+              <tr>
+                <th colspan="2">교양계</th>
+                <td colspan="3">41</td>
+              </tr>
+            </tr>
+        
+            <tr>
+              <th rowspan="5">전공영역</th>
+              <th rowspan="2">최소전공</th>
+              <th>필수</th>
+              <td colspan="3">12</td>
+              <tr>
+                <th>선택</th>
+                <td colspan="3">30</td>
+              </tr>
+              <tr>
+                <th colspan="2">심화전공</th>
+                <td>0</td>
+                <td>12</td>
+                <td>27</td>
+              </tr>
+              <tr>
+                <th colspan="2">전공계</th>
+                <td>42</td>
+                <td>54</td>
+                <td>69</td>
+              </tr>
+              <tr>
+                <th colspan="2">교직</th>
+                <td colspan="3">0</td>
+              </tr>
+            </tr>
+        
+            <tr>
+              <th colspan="3">자유선택</th>
+              <td><b class="boldFont">47</b></td>
+              <td><b class="boldFont">35</b></td>
+              <td><b class="boldFont">20</b></td>
+            </tr>
+        
+            <tr>
+              <th colspan="3">졸업학점(합계)</th>
+              <td><b class="boldFont">130</b></td>
+              <td><b class="boldFont">130</b></td>
+              <td><b class="boldFont">130</b></td>
+            </tr>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let state = 1;
+    let pannelTitle = document.getElementById('pannelTitle');
+    function Toggle() {
+      if (state === 1) {
+        pannelTitle.innerText = '졸업 이수 학점';
+        state = 0;
+        document.getElementById('myCredit').style.display = 'none';
+        document.getElementById('curriculum').style.display = 'block';
+      } else {
+        pannelTitle.innerText = '나의 학점';
+        state = 1;
+        document.getElementById('myCredit').style.display = 'block';
+        document.getElementById('curriculum').style.display = 'none';
+
+      }
     }
-    table {
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
-  <div class="flexBox" style="flex-direction: column;">
-    <div id="container">
-  <h3>전공영역</h3>
-  <ul>
-      <li><a href="major1.html"><h4>전공필수  12/12</h4></a>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>전공선택  30/30</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>심화전공  27/27</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>전공합계  69/69</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-  </ul>
-  <hr />
-  <h3>교양영역</h3>
-  <ul>
-      <li><h4>기초교양  7/7</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>균형교양  12/12</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>특화교양  1/1</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>대학별교양  9/9</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-      <li><h4>교양합계  29/29</h4>
-      <div class="graph"><strong class="bar" style="width: 100%;">100%</strong></div></li>
-  </ul>
-  <hr />
-  <h3>그 외</h3>
-  <ul>
-    <li><h4>자유선택  25/32<h4>
-    <div class="graph"><strong class="bar" style="width: 76%;">76%</strong></div></li>
-  </ul>
-  <hr />
-  <h3>전체학점</h3>
-    <div class="graph"><strong class="bar" style="width: 97%;">97%</strong></div>
-    <table>
-      <tr>
-        <th>합계 125/130</th>
-        <th>총신청학점 125</th>
-        <th>총취득학점 124.5</th>
-        <th>총평점점계 426.5</th>
-        <th>총평점평균 3.44</th>
-      </tr>
-    </table>
-  </div>
-  </div>
-</body>
+  </script>
 </html>
 {%endblock%}

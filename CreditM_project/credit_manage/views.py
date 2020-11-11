@@ -11,28 +11,17 @@ def index(request):
     p = re.findall('fn_appendCalCon.*;',str(tag))
     # for i in p:
     #     print(i)
-    matching = [s for s in p if "202010" in s] 
+    matching = [s for s in p if "202011" in s] 
     calArr=[]
     calDic={}
     calDes=[]
     for i in matching:
         li = re.findall('.[\d]+.[\d]+.[\d]+\(.\).*\'',i)
-        # print(li)
         for lis in li:
             lis = lis.replace("'","").split(', ')
-            # lis
             calArr.append(lis)
-            # calArr.append(lis)
-            # calDes.append(lis2)
-
         print(calArr)
-        # print(calDes)
-            # for t in lis:
-                # print(t.replace("'",""))
-        
 
-
-    # print(matching)
     return render(request, 'index.html',{'calArr':calArr})
 def myaccount(request):
     return render(request, 'modifyform.html')
@@ -48,3 +37,7 @@ def intro(request):
 
 def signin(request):
     return render(request, 'signin.html')
+def classList(request):
+    return render(request, 'classList.html')
+def classView(request):
+    return render(request, 'classView.html')
