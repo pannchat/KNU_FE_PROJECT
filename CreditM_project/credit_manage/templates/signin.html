@@ -70,7 +70,13 @@
                 });
             </script>
             <div id="majorModal">
-                test
+                <select name="s1" id="s1">
+                    <option value="test1">IT대학</option>
+                    <option value="test2">간호대학</option>
+                </select>
+                <select name="s2" id="s2">
+                    <option value="---">---</option>
+                </select>
                 <img id="modalCloseBtn" src="{% static 'credit_manage/img/cross.png'%}">
             </div>
             <style>
@@ -152,7 +158,12 @@
 			alert("Caught Exception: "+ e.description);
 		}
 	};
-
+    let mArr={'cn':'컴퓨터과학','cn':'정보통신공학'};
+    document.getElementById('s1').addEventListener('click',
+        () => {
+            // document.getElementById("s2").innerHTML="<option value='c'>컴퓨터공학</option>";
+        }
+    );
 
 </script>
 </body>

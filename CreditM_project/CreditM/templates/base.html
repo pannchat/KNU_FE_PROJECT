@@ -38,12 +38,20 @@
       <li class="listStyle">
         <a href="{% url 'classView'%}">수업담기</a>
       </li>
-      <li class="listStyle"><a href="{% url 'login'%}">로그아웃</a></li>
+      <li class="listStyle"><a href="{% url 'login'%}">로그인</a></li>
+      <li class="listStyle"><a onclick="logout()">로그아웃</a></li>
     </ul>
   </nav>
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    if (
+      sessionStorage.getItem['token'] === undefined &&
+      document.title !== '로그인'
+    ) {
+      alert('로그인 후 이용 가능합니다.');
+      location.href = "{%url 'login'%}";
+    }
     document.querySelector('#menuBtn').addEventListener('click', function (e) {
       if (document.querySelector('.menuWrap').classList.contains('on')) {
         //메뉴 slideOut
@@ -77,6 +85,10 @@
   });
   function goBack() {
     window.history.back();
+  }
+  function logout() {
+    sessionStorage.clear();
+    alert('');
   }
 </script>
 {% block contents %} {% endblock %}
