@@ -151,8 +151,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 		alert("XMLHTTP 인스턴스를 만들 수 없습니다.");
 		return false;
 	}
+
 	req.onreadystatechange = alertContents;
 	req.open('GET', 'http://54.180.157.139:8080/api/accounts', true);
+
 	req.setRequestHeader('Authorization','Bearer ' + sessionStorage.getItem('token'));
 	req.send();
 
@@ -162,7 +164,7 @@ function alertContents(){
 	try{
 			if( req.readyState === XMLHttpRequest.DONE){
 				// alert(req.status);
-				if(req.status === 200){
+				if(req.status === 200||req.status === 201){
 					reqs = req.responseText;
 					// alert(reqs);
 					var res = JSON.parse(reqs);
@@ -174,7 +176,7 @@ function alertContents(){
 				}
 			}
 		}catch(e){
-			alert("Caught Exception: "+ e);
+			alert("Caught Exception: "+ e.description);
 		}
 }
 

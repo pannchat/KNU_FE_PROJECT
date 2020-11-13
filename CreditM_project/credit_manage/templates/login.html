@@ -62,7 +62,7 @@
 <div class="flexBox" style="flex-direction: column;">
 	<input class="joinInput"type="text" placeholder="Student ID" id="studentId" />
 	<input class="joinInput"type="password" placeholder="Password" id="studentPw" />
-	<div style="width:90%;text-align: right">forgot account?</div>
+	<div style="width:90%;text-align: right;color:#ffbf00"><a href="{%url 'signin'%}">sign in</a></div>
 </div>
 
 <div class="flexBox" style="margin-top:15vh;">
@@ -99,7 +99,6 @@
 					reqs = req.responseText;
 					var jsonReqs = JSON.parse(reqs);
 					alert("로그인 성공");
-					alert(jsonReqs['token']);
 					sessionStorage.setItem("token", jsonReqs['token']);
                     location.href="{% url 'index'%}";
 
